@@ -10,6 +10,8 @@ from matplotlib import pyplot as plt
 ################### CAS ###################
 file_cases = 'time_series_covid19_confirmed_global.csv'
 
+
+##### Question b) #####
 # data_confirmed_cases = pd.read_csv(file_cases).loc[[137, 202, 116, 62, 226, 170, 66, 197, 6]]
 # data_confirmed_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
 # print(data_confirmed_cases)
@@ -28,6 +30,8 @@ file_cases = 'time_series_covid19_confirmed_global.csv'
 #
 # plt.show()
 
+
+##### Question c) #####
 # data_confirmed_cases = pd.read_csv(file_cases).loc[[137, 202, 116, 62, 226, 170, 66, 197, 6]]
 # data_confirmed_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
 # print(data_confirmed_cases)
@@ -52,6 +56,8 @@ print("\n")
 ################### MORTS ###################
 file_deads = 'time_series_covid19_deaths_global.csv'
 
+
+##### Question b) #####
 # data_death_cases = pd.read_csv(file_deads).loc[[137, 202, 116, 62, 226, 170, 66, 197, 6]]
 # data_death_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
 # print(data_death_cases)
@@ -68,22 +74,24 @@ file_deads = 'time_series_covid19_deaths_global.csv'
 #
 # plt.show()
 
-data_death_cases = pd.read_csv(file_deads).loc[[137, 202, 116, 62, 226, 170, 66, 197, 6]]
-data_death_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
-print(data_death_cases)
 
-pays = ['Italy', 'Spain', 'France', 'Hubei (China)', 'US', 'Netherlands', 'Jiangxi (China)', 'Singapore', 'Argentina']
-
-fig, ax = plt.subplots(figsize=(17, 8))
-j=0
-for idx, rows in data_death_cases.iterrows():
-    plt.plot(rows, label=pays[j])
-    plt.setp(ax.get_xticklabels(), rotation=88)
-    j=j+1
-
-
-
-plt.xlabel("Dates")
-plt.ylabel("Nombre de cas confirmé")
-plt.legend()
-plt.show()
+##### Question d) #####
+# data_death_cases = pd.read_csv(file_deads).loc[[137, 202, 116, 62, 226, 170, 66, 197, 6]]
+# data_death_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
+# print(data_death_cases)
+#
+# pays = ['Italy', 'Spain', 'France', 'Hubei (China)', 'US', 'Netherlands', 'Jiangxi (China)', 'Singapore', 'Argentina']
+#
+# fig, ax = plt.subplots(figsize=(17, 8))
+# j=0
+# for idx, rows in data_death_cases.iterrows():
+#     plt.plot(rows, label=pays[j])
+#     plt.setp(ax.get_xticklabels(), rotation=88)
+#     j=j+1
+#
+#
+#
+# plt.xlabel("Dates")
+# plt.ylabel("Nombre de cas confirmé")
+# plt.legend()
+# plt.show()
