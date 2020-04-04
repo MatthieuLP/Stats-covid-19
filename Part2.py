@@ -15,13 +15,57 @@ data_confirmed_cases = pd.read_csv(file_cases).loc[[137, 202, 116, 62, 226, 170,
 data_confirmed_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
 data_death_cases = pd.read_csv(file_deads).loc[[137, 202, 116, 62, 226, 170, 66, 197, 6]]
 data_death_cases.drop(['Lat', 'Long', 'Province/State', 'Country/Region'], axis='columns', inplace=True)
+
+#Changement des chiffres des cas de "global" à "journalier"
+for idx, rows in data_confirmed_cases.iterrows():
+    for janvier in range(22, 32):
+        date = "1/"+str(janvier)+"/20"
+        if janvier != 22:
+            tmp = chiffre_precedent
+            chiffre_precedent = rows[date]
+            rows[date] = rows[date] - tmp
+        else:
+            chiffre_precedent = rows[date]
+    for fevrier in range(1, 30):
+        date = "2/" + str(fevrier) + "/20"
+        tmp = chiffre_precedent
+        chiffre_precedent = rows[date]
+        rows[date] = rows[date] - tmp
+    for mars in range(1, 23):
+        date = "3/" + str(mars) + "/20"
+        tmp = chiffre_precedent
+        chiffre_precedent = rows[date]
+        rows[date] = rows[date] - tmp
+
+#Changement des chiffres des morts de "global" à "journalier"
+for idx, rows in data_death_cases.iterrows():
+    for janvier in range(22, 32):
+        date = "1/"+str(janvier)+"/20"
+        if janvier != 22:
+            tmp = chiffre_precedent
+            chiffre_precedent = rows[date]
+            rows[date] = rows[date] - tmp
+        else:
+            chiffre_precedent = rows[date]
+    for fevrier in range(1, 30):
+        date = "2/" + str(fevrier) + "/20"
+        tmp = chiffre_precedent
+        chiffre_precedent = rows[date]
+        rows[date] = rows[date] - tmp
+    for mars in range(1, 23):
+        date = "3/" + str(mars) + "/20"
+        tmp = chiffre_precedent
+        chiffre_precedent = rows[date]
+        rows[date] = rows[date] - tmp
+
 i=0
 for idx, rows1 in data_death_cases.iterrows():
+
     fig, ax = plt.subplots(figsize=(17, 8))
-    plt.plot(rows1, color="orange", label="morts")
+    plt.plot(rows1, color="red", label="morts")
     for idy, rows2 in data_confirmed_cases.iterrows():
         if(idx == idy):
-            plt.plot(rows2, color="blue", label="contaminés")
+            plt.plot(rows2, color="green", label="contaminés")
     plt.xlabel("Dates")
     plt.ylabel("Nombre de gens")
     plt.title("Nombre journalier de cas et de morts: "+pays[i])
